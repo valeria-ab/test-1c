@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { DataResponceType } from './App';
+import { DataResponceType, StatusType } from './App';
 import { Pagination, TablePagination } from '@mui/material';
 
 
@@ -47,6 +47,20 @@ function createData(
   return { id, date, type, autor, account, terminal, status, className };
 }
 
+const translateStatus = (status: StatusType) => {
+switch (status) {
+  case "new": 
+  return "Новое"
+  case "completed": 
+  return "Выполнено"
+  case "assigned_to": 
+  return "Назначено"
+  case "started": 
+  return "Выполняется"
+  case "declined": 
+  return "Отменено"
+}
+}
 
 
 
@@ -57,7 +71,7 @@ export function CustomizedTables(props: { data: DataResponceType }) {
   const rows = props.data.map(i =>
     createData(`№${i.id}`, i.created_date, i.order_type.name,
       `${i.created_user.surname} ${i.created_user.name}`,
-      i.account.name, i.terminal.name, i.status, i.status))
+      i.account.name, i.terminal.name, translateStatus(i.status), i.status ))
 
 
 

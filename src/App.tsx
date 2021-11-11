@@ -3,7 +3,7 @@ import './App.css';
 import {CustomizedTables} from './CustomizedTables';
 import axios from 'axios';
 
-type StatusType = "new" | "completed" | "assigned_to" | "started" | "declined"
+export type StatusType = "new" | "completed" | "assigned_to" | "started" | "declined"
 type OrderTypeNameType = "Безвозвратное изъятие документов" | "Доставка клиенту" | "Вывоз коробов"
 
 type ItemType = {
