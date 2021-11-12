@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { DataResponceType, StatusType } from './App';
-import { Pagination, TablePagination } from '@mui/material';
+import { TablePagination } from '@mui/material';
 
 
 
@@ -48,18 +48,18 @@ function createData(
 }
 
 const translateStatus = (status: StatusType) => {
-switch (status) {
-  case "new": 
-  return "Новое"
-  case "completed": 
-  return "Выполнено"
-  case "assigned_to": 
-  return "Назначено"
-  case "started": 
-  return "Выполняется"
-  case "declined": 
-  return "Отменено"
-}
+  switch (status) {
+    case "new":
+      return "Новое"
+    case "completed":
+      return "Выполнено"
+    case "assigned_to":
+      return "Назначено"
+    case "started":
+      return "Выполняется"
+    case "declined":
+      return "Отменено"
+  }
 }
 
 
@@ -71,7 +71,7 @@ export function CustomizedTables(props: { data: DataResponceType }) {
   const rows = props.data.map(i =>
     createData(`№${i.id}`, i.created_date, i.order_type.name,
       `${i.created_user.surname} ${i.created_user.name}`,
-      i.account.name, i.terminal.name, translateStatus(i.status), i.status ))
+      i.account.name, i.terminal.name, translateStatus(i.status), i.status))
 
 
 
@@ -91,6 +91,8 @@ export function CustomizedTables(props: { data: DataResponceType }) {
     setPage(0);
   };
 
+
+
   return (
     <>
       <TableContainer component={Paper}>
@@ -108,7 +110,7 @@ export function CustomizedTables(props: { data: DataResponceType }) {
               ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : rows
             ).map((row) => (
-              <StyledTableRow key={row.id}>
+              <StyledTableRow key={row.id} >
                 <StyledTableCell component="th" scope="row">
                   {row.id} <div className={"span"}>{row.date}</div>
                 </StyledTableCell>

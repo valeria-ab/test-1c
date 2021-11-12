@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import {CustomizedTables} from './CustomizedTables';
 import axios from 'axios';
+import { Route } from 'react-router';
 
 export type StatusType = "new" | "completed" | "assigned_to" | "started" | "declined"
 type OrderTypeNameType = "Безвозвратное изъятие документов" | "Доставка клиенту" | "Вывоз коробов"
@@ -49,6 +50,7 @@ function App() {
   return (
     <div className="App">
        <CustomizedTables data={data}/> 
+      
     </div>
   );
 }
